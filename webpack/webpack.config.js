@@ -32,7 +32,9 @@ module.exports = {
   //   }),
   // ],
   module: {
-    rules: [{
+    rules: [
+      ...base.module.rules,
+      {
       test: /\.css$/i,
       use: ["style-loader", "css-loader"],//二选一：1.style-loader会放到页面里面。2.抽成文件。开发的时候使用style-loader，因为它快，不用生成文件
     }, ],
