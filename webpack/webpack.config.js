@@ -3,8 +3,8 @@ var path = require('path');
 
 module.exports = {
   mode: 'development',
-  entry: './src/index.js',//默认的入口就是index.js
-//   entry: './foo.js',//报错
+  entry: './src/index.js', //默认的入口就是index.js
+  //   entry: './foo.js',//报错
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'index.[contenthash].js'
@@ -12,17 +12,18 @@ module.exports = {
     // filename: 'main.js' //可以改名字
     // filename: 'foo.bundle.js'
   },
+  devtool: 'inline-source-map',
+  devServer: {
+    contentBase: './dist',
+  },
   plugins: [new HtmlWebpackPlugin({
-    title: 'My App123',//可以改index.html里面的title
+    title: 'My App123', //可以改index.html里面的title
     template: 'src/assets/index.html'
   })],
   module: {
-    rules: [
-      {
-        test: /\.css$/i,
-        use: ["style-loader", "css-loader"],
-      },
-    ],
+    rules: [{
+      test: /\.css$/i,
+      use: ["style-loader", "css-loader"],
+    }, ],
   },
 };
-
